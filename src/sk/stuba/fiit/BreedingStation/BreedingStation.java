@@ -42,6 +42,22 @@ public class BreedingStation {
 		return this.num_of_pets;
 	}
 
+	public int GetDogs() {
+		return dogs.size();
+	}
+
+	public String GetDogName(int n) {
+		return dogs.get(n).GetName();
+	}
+
+	public String GetCatName(int n) {
+		return cats.get(n).GetName();
+	}
+
+	public int GetCats() {
+		return cats.size();
+	}
+
 	public void GetName() {
 		System.out.println(this.name);
 	}

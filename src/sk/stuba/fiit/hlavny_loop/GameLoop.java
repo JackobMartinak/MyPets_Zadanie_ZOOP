@@ -42,8 +42,8 @@ public class GameLoop {
 		// station.GetPetInfo(0, 'd');
 
 		while (station.GetPet() > 0) {
-			System.out.println("========================");
-			System.out.printf("%-5S Day %s", "", station.GetDay());
+			System.out.printf("%n ======================== %n");
+			System.out.printf("%-5S Day %s %n", "", station.GetDay());
 			System.out.println("========================");
 
 			while (num_of_tasks < 4) {
@@ -52,6 +52,28 @@ public class GameLoop {
 				}
 				int task = input.nextInt();
 
+				if (task == 0) {
+					System.out.println("Who to take for a Walk?");
+					int times = 0;
+					for (int i = 0; i < station.GetPet(); i++) {
+						if (station.GetDogs() > 0) {
+							System.out.printf("%-5s %s %n", times, station.GetDogName(i));
+							times++;
+						}
+						if (station.GetCats() > 0) {
+							System.out.printf("%-5s %s %n", times, station.GetCatName(i));
+							times++;
+						}
+
+					}
+					System.out.printf("%-5s All dogs %n", times);
+
+					System.out.printf("%-5s All cats %n", times);
+
+					int walk = input.nextInt();
+					// TODO Do a logic for unknown inputs from above code
+				}
+				// TODO Finish the 10 task logic coditions
 			}
 
 			station.SetPet(0);
