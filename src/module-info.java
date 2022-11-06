@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Repik
+ *
+ */
+module MyPets {
+}
