@@ -10,6 +10,48 @@ import java.util.Scanner;
 
 public class GameLoop {
 
+	public static void taskLogicForWalk(String n, BreedingStation station) {
+		String converted = n.toLowerCase().replaceAll("\\s+", "");
+		String allDogs = "alldogs";
+		String allCats = "allcats";
+		if (converted.equals(allDogs)) {
+			for (int i = 0; i < station.GetDogs_size(); i++) {
+				station.GetDog(i).GoingForWalk(true);
+				System.out.println("THIS ALL DOGS");
+			}
+		} else if (converted.equals(allCats)) {
+			for (int j = 0; j < station.GetCats_size(); j++) {
+				station.GetCat(j).GoingForWalk(true);
+				System.out.println("THIS ALL CATS");
+			}
+		} else {
+			if (station.GetDogs_size() > 0) {
+				for (int i = 0; i < station.GetDogs_size(); i++) {
+					if (converted.equals(station.GetDog(i).GetName().toLowerCase().replaceAll("\\s+", ""))) {
+						station.GetDog(i).GoingForWalk(true);
+						System.out.printf("You took %s for a walk.", station.GetDog(i).GetName());
+						break;
+					} else {
+						System.out.println("THIS ONE DOG");
+					}
+				}
+			}
+			if (station.GetCats_size() > 0) {
+				for (int j = 0; j < station.GetCats_size(); j++) {
+					if (converted.equals(station.GetCat(j).GetName().toLowerCase().replaceAll("\\s+", ""))) {
+						station.GetCat(j).GoingForWalk(true);
+						System.out.printf("You took %s for a walk.", station.GetCat(j).GetName());
+						break;
+					} else {
+						System.out.println("THIS ONE CAT");
+					}
+
+				}
+			}
+		}
+
+	}
+
 	public static void main(String[] args) {
 
 		String[] tasks = { "Go for a walk", "Shower", "Refill bowl of water", "Give Food", "Give Snack", "Play Fetch",
@@ -33,7 +75,7 @@ public class GameLoop {
 		BreedingStation station = new BreedingStation(name, num_of_petsInStation, names);
 
 		System.out.printf("Your station %s be Starting with %s Pets. %n", name, num_of_petsInStation);
-		System.out.println("Every day you can do 10 tasks after 10 tasks your day ends. So choose carefully.");
+		System.out.println("Every day you can do 4 tasks after 4 tasks your day ends. So choose carefully.");
 		System.out.println("Let's the journey begin!");
 		System.out.println("==================================================================");
 
@@ -42,6 +84,7 @@ public class GameLoop {
 		// station.GetPetInfo(0, 'd');
 
 		while (station.GetPet() > 0) {
+			System.out.println(station.GetCats_size());
 			System.out.printf("%n ======================== %n");
 			System.out.printf("%-5S Day %s %n", "", station.GetDay());
 			System.out.println("========================");
@@ -54,24 +97,36 @@ public class GameLoop {
 
 				if (task == 0) {
 					System.out.println("Who to take for a Walk?");
-					int times = 0;
-					for (int i = 0; i < station.GetPet(); i++) {
-						if (station.GetDogs() > 0) {
-							System.out.printf("%-5s %s %n", times, station.GetDogName(i));
-							times++;
-						}
-						if (station.GetCats() > 0) {
-							System.out.printf("%-5s %s %n", times, station.GetCatName(i));
-							times++;
-						}
+					System.out.println("========================");
+					System.out.printf("%-10s DOGS %n", "");
+					if (station.GetDogs_size() > 0) {
 
+						for (int i = 0; i < station.GetDogs_size(); i++) {
+							System.out.printf("%-5s %s %n", "-", station.GetDog(i).GetName());
+						}
+						System.out.printf("%-5s All dogs %n", "-");
+					} else {
+						System.out.printf("%-5s You Dont Have a Dog. %n", "-");
 					}
-					System.out.printf("%-5s All dogs %n", times);
+					System.out.println("========================");
+					System.out.printf("%-10s Cats %n", "");
+					if (station.GetCats_size() > 0) {
 
-					System.out.printf("%-5s All cats %n", times);
+						for (int i = 0; i < station.GetCats_size(); i++) {
+							System.out.printf("%-5s %s %n", "-", station.GetCat(i).GetName());
+						}
+						System.out.printf("%-5s All cats %n", "-");
+					} else {
+						System.out.printf("%-5s You Dont Have a cat. %n", "-");
+					}
+					input.next(); // Clearing the buffer
 
-					int walk = input.nextInt();
-					// TODO Do a logic for unknown inputs from above code
+					System.out.println("===============");
+					String walk = input.nextLine();
+					System.out.println(walk); // TODO NEW SCANNER FOR THIS INPUT / NOT CLEARING BUFFER
+					System.out.println("===============");
+					// taskLogicForWalk(walk, station);
+					num_of_tasks++;
 				}
 				// TODO Finish the 10 task logic coditions
 			}

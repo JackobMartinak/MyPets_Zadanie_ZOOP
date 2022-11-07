@@ -16,7 +16,11 @@ public class BreedingStation {
 		this.name = name;
 		this.num_of_pets = num_of_pets;
 		for (int i = 0; i < this.num_of_pets; i++) {
-			dogs.add(new Dog(names.get(i), 1));
+			if (i % 2 == 0) {
+				dogs.add(new Dog(names.get(i), 1, 'm'));
+			} else {
+				dogs.add(new Dog(names.get(i), 1, 'f'));
+			}
 			// System.out.println(names.get(i));
 		}
 	}
@@ -42,23 +46,23 @@ public class BreedingStation {
 		return this.num_of_pets;
 	}
 
-	public int GetDogs() {
+	public int GetDogs_size() {
 		return dogs.size();
 	}
 
-	public String GetDogName(int n) {
-		return dogs.get(n).GetName();
+	public Dog GetDog(int n) {
+		return dogs.get(n);
 	}
 
-	public String GetCatName(int n) {
-		return cats.get(n).GetName();
+	public Cat GetCat(int n) {
+		return cats.get(n);
 	}
 
-	public int GetCats() {
+	public int GetCats_size() {
 		return cats.size();
 	}
 
-	public void GetName() {
+	public void GetName_station() {
 		System.out.println(this.name);
 	}
 
@@ -81,5 +85,6 @@ public class BreedingStation {
 			System.out.printf("Has %s happiness %n", dogs.get(n).GetHappiness());
 
 		}
+		// TODO Do if for Cats
 	}
 }
