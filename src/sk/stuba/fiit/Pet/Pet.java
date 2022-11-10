@@ -94,4 +94,8 @@ public class Pet {
 			System.out.println("Incorrect Value");
 		}
 	}
+
+	public void SetHappiness() {
+		this.happiness = 100;
+	}
 }

@@ -17,22 +17,20 @@ public class GameLoop {
 		if (converted.equals(allDogs)) {
 			for (int i = 0; i < station.GetDogs_size(); i++) {
 				station.GetDog(i).GoingForWalk(true);
-				System.out.println("THIS ALL DOGS");
 			}
+			System.out.println("Going for walk with ALL DOGS");
 		} else if (converted.equals(allCats)) {
 			for (int j = 0; j < station.GetCats_size(); j++) {
 				station.GetCat(j).GoingForWalk(true);
-				System.out.println("THIS ALL CATS");
 			}
+			System.out.println("Going for walk with ALL CATS");
 		} else {
 			if (station.GetDogs_size() > 0) {
 				for (int i = 0; i < station.GetDogs_size(); i++) {
 					if (converted.equals(station.GetDog(i).GetName().toLowerCase().replaceAll("\\s+", ""))) {
 						station.GetDog(i).GoingForWalk(true);
-						System.out.printf("You took %s for a walk.", station.GetDog(i).GetName());
+						System.out.printf("You took %s for a walk. %n", station.GetDog(i).GetName());
 						break;
-					} else {
-						System.out.println("THIS ONE DOG");
 					}
 				}
 			}
@@ -40,16 +38,13 @@ public class GameLoop {
 				for (int j = 0; j < station.GetCats_size(); j++) {
 					if (converted.equals(station.GetCat(j).GetName().toLowerCase().replaceAll("\\s+", ""))) {
 						station.GetCat(j).GoingForWalk(true);
-						System.out.printf("You took %s for a walk.", station.GetCat(j).GetName());
+						System.out.printf("You took %s for a walk. %n", station.GetCat(j).GetName());
 						break;
-					} else {
-						System.out.println("THIS ONE CAT");
 					}
-
 				}
 			}
-		}
 
+		}
 	}
 
 	public static void main(String[] args) {
@@ -119,13 +114,12 @@ public class GameLoop {
 					} else {
 						System.out.printf("%-5s You Dont Have a cat. %n", "-");
 					}
-					input.next(); // Clearing the buffer
+					// input.next(); // Clearing the buffer
 
-					System.out.println("===============");
-					String walk = input.nextLine();
-					System.out.println(walk); // TODO NEW SCANNER FOR THIS INPUT / NOT CLEARING BUFFER
-					System.out.println("===============");
-					// taskLogicForWalk(walk, station);
+					Scanner input_two = new Scanner(System.in);
+					String walk = input_two.nextLine();
+
+					taskLogicForWalk(walk, station);
 					num_of_tasks++;
 				}
 				// TODO Finish the 10 task logic coditions
