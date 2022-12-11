@@ -5,9 +5,13 @@ public class Customer extends Human {
 	private boolean isBuying = true;
 	private int pets;
 
-	public Customer(String name, int money, int pets) {
+	private Customer(String name, int money, int pets) {
 		super(name, money, pets);
 		this.pets = pets;
+	}
+
+	public static Customer createCustomer(String name, int money, int pets) {
+		return new Customer(name, money, pets);
 	}
 
 	public void SetIsBuying(boolean ib) {

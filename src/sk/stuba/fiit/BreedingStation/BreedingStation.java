@@ -5,7 +5,7 @@ import java.util.List;
 import sk.stuba.fiit.Pet.*;
 
 public class BreedingStation {
-	private String name;
+	private final String NAME;
 	private int day = 0;
 	private int num_of_events;
 	private int num_of_pets;
@@ -13,7 +13,7 @@ public class BreedingStation {
 	List<Cat> cats = new ArrayList<Cat>();
 
 	public BreedingStation(String name, int num_of_pets, List<String> names) {
-		this.name = name;
+		this.NAME = name;
 		this.num_of_pets = num_of_pets;
 		for (int i = 0; i < this.num_of_pets; i++) {
 			if (i % 2 == 0) {
@@ -63,11 +63,15 @@ public class BreedingStation {
 	}
 
 	public void GetName_station() {
-		System.out.println(this.name);
+		System.out.println(this.NAME);
 	}
 
-	public void GetPetInfo(int n, char p) {
-		if (p == 'd') {
+	public String toString() {
+		return this.NAME;
+	}
+
+	public void GetPetInfo(int n, String p) {
+		if (p.equalsIgnoreCase("d")) {
 			System.out.printf("Dog %S INFO: %n", dogs.get(n).GetName());
 			System.out.printf("Has %s happiness %n", dogs.get(n).GetHappiness());
 			System.out.printf("Has %s health %n", dogs.get(n).GetHealth());
@@ -85,6 +89,30 @@ public class BreedingStation {
 			System.out.printf("Has %s happiness %n", dogs.get(n).GetHappiness());
 
 		}
-		// TODO Do if for Cats
+		if (p.equalsIgnoreCase("c")) {
+			System.out.printf("Cat %S INFO: %n", cats.get(n).GetName());
+			System.out.printf("Has %s happiness %n", cats.get(n).GetHappiness());
+			System.out.printf("Has %s health %n", cats.get(n).GetHealth());
+			System.out.printf("Has %s hunger %n", cats.get(n).GetHunger());
+			if (cats.get(n).GetCleanliness()) {
+				System.out.printf("%s is clean %n", cats.get(n).GetName());
+			} else {
+				System.out.printf("%s needs to be showered %n", cats.get(n).GetName());
+			}
+			if (cats.get(n).GetHydration()) {
+				System.out.printf("%s is hydrated. %n", cats.get(n).GetName());
+			} else {
+				System.out.printf("%s need his bowl of water refilled. %n", cats.get(n).GetName());
+			}
+			System.out.printf("Has %s happiness %n", cats.get(n).GetHappiness());
+		}
+	}
+
+	public void DogRemove(int n) {
+		dogs.remove(n);
+	}
+
+	public void CatRemove(int n) {
+		cats.remove(n);
 	}
 }

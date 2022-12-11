@@ -8,10 +8,21 @@ public class Dog extends Pet {
 		super(name, age, gender);
 	}
 
+	public boolean IsInCage(String name) {
+		if (this.IsInCage()) {
+			System.out.printf("%s is in cage!", this.GetName());
+
+		} else {
+			System.out.printf("%s is not in cage!", this.GetName());
+		}
+		return this.IsInCage();
+	}
+
 	public int GetPrice() {
 		return this.price;
 	}
 
+	@Override
 	public void SetPrice(int pr) {
 		if (pr > 0) {
 			this.price = pr;
@@ -22,5 +33,10 @@ public class Dog extends Pet {
 
 	public void MakingPuppies() {
 		// TODO do function for this
+		// Use downcasting for this method
+		// Pet pet = new Pet();
+		// Dog downcastedDog = (Dog) animal
+		// then add dog to the list ??
 	}
+
 }

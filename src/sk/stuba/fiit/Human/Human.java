@@ -16,11 +16,15 @@ public class Human {
 		return this.money;
 	}
 
+	public String toString() {
+		return this.name;
+	}
+
 	public void SetMoney(int mn) {
 		this.money = mn;
 	}
 
-	public void PrintStatus() {
+	public final void PrintStatus() {
 		System.out.printf("%s has %s in account.", this.name, this.money);
 	}
 
