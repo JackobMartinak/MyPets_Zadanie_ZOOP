@@ -809,8 +809,6 @@ public class GameLoop {
 			station.NextDay();
 			decreaseStats(station);
 
-			// TODO : Complete the Random EVENTS and SELLING the PETS
-
 		}
 	}
 

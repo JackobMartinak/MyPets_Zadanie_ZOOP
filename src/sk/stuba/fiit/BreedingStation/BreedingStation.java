@@ -11,16 +11,16 @@ import sk.stuba.fiit.Pet.*;
 public class BreedingStation {
 	private final String NAME;
 	private int day = 0;
-	private int num_of_events;
-	private int num_of_pets;
+	private int numOfEvents;
+	private int numOfPets;
 	List<Dog> dogs = new ArrayList<Dog>();
 	List<Cat> cats = new ArrayList<Cat>();
 	List<String> eventList = new ArrayList<String>();
 
-	public BreedingStation(String name, int num_of_pets, List<String> names) {
+	public BreedingStation(String name, int numOfPets, List<String> names) {
 		this.NAME = name;
-		this.num_of_pets = num_of_pets;
-		for (int i = 0; i < this.num_of_pets; i++) {
+		this.numOfPets = numOfPets;
+		for (int i = 0; i < this.numOfPets; i++) {
 			if (i % 2 == 0) {
 				dogs.add(new Dog(names.get(i), 1, 'm'));
 			} else {
@@ -36,11 +36,11 @@ public class BreedingStation {
 		eventList.add("had New babies");
 		eventList.add("Human came to buy");
 		eventList.add("You were gifted a cat");
-		num_of_events = eventList.size();
+		numOfEvents = eventList.size();
 	}
 
 	public String RandomEvent(int rn, int dogOrCat, Customer cust) {
-		int rand = (int) (Math.random() * eventList.size()) + 0;
+		int rand = (int) (Math.random() * eventList.size()) + 1;
 
 		Scanner nameScanner = new Scanner(System.in);
 
@@ -138,7 +138,7 @@ public class BreedingStation {
 	}
 
 	public int GetRandomEvents() {
-		return num_of_events;
+		return numOfEvents;
 	}
 
 	public void NextDay() {
@@ -150,11 +150,11 @@ public class BreedingStation {
 	}
 
 	public void SetPet(int n) {
-		this.num_of_pets = n;
+		this.numOfPets = n;
 	}
 
 	public int GetPet() {
-		return this.num_of_pets;
+		return this.numOfPets;
 	}
 
 	public int GetDogs_size() {

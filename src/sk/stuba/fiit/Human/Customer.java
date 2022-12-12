@@ -34,9 +34,4 @@ public class Customer extends Human {
 		}
 	}
 
-	public void PrintStatus(int pet) {
-		System.out.printf("%s has %s pets and %s in his account");
-		// TODO Finish naming for OVERRIDE METHOD
-	}
-
 }
