@@ -1,9 +1,11 @@
 package sk.stuba.fiit.hlavny_loop;
 
 import sk.stuba.fiit.BreedingStation.*;
+import sk.stuba.fiit.Human.*;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.lang.Math;
 import java.util.Scanner;
 
 public class GameLoop {
@@ -91,12 +93,12 @@ public class GameLoop {
 				station.GetDog(i).SetBowlOfWater(100);
 				;
 			}
-			System.out.println("Replacing everyone's bowls of water! %n");
+			System.out.printf("Replacing everyone's bowls of water! %n");
 		} else if (converted.equals(allCats)) {
 			for (int j = 0; j < station.GetCats_size(); j++) {
 				station.GetCat(j).SetBowlOfWater(100);
 			}
-			System.out.println("Replacing bowls of water for ALL CATS %n");
+			System.out.printf("Replacing bowls of water for ALL CATS %n");
 		} else {
 			if (station.GetDogs_size() > 0) {
 				for (int i = 0; i < station.GetDogs_size(); i++) {
@@ -129,12 +131,12 @@ public class GameLoop {
 				station.GetDog(i).SetHunger(false);
 				;
 			}
-			System.out.println("Giving food to ALL DOGS! %n");
+			System.out.printf("Giving food to ALL DOGS! %n");
 		} else if (converted.equals(allCats)) {
 			for (int j = 0; j < station.GetCats_size(); j++) {
 				station.GetCat(j).SetHunger(false);
 			}
-			System.out.println("Giving food to ALL CATS %n");
+			System.out.printf("Giving food to ALL CATS %n");
 		} else {
 			if (station.GetDogs_size() > 0) {
 				for (int i = 0; i < station.GetDogs_size(); i++) {
@@ -167,12 +169,12 @@ public class GameLoop {
 				station.GetDog(i).SetHappiness();
 				;
 			}
-			System.out.println("Giving snack to ALL DOGS! %n");
+			System.out.printf("Giving snack to ALL DOGS! %n");
 		} else if (converted.equals(allCats)) {
 			for (int j = 0; j < station.GetCats_size(); j++) {
 				station.GetCat(j).SetHappiness();
 			}
-			System.out.println("Giving snack to ALL CATS %n");
+			System.out.printf("Giving snack to ALL CATS %n");
 		} else {
 			if (station.GetDogs_size() > 0) {
 				for (int i = 0; i < station.GetDogs_size(); i++) {
@@ -205,13 +207,13 @@ public class GameLoop {
 				station.GetDog(i).SetHappiness();
 				station.GetDog(i).SetHealth(50, "+");
 			}
-			System.out.println("Playing fetch with ALL DOGS! %n");
+			System.out.printf("Playing fetch with ALL DOGS! %n");
 		} else if (converted.equals(allCats)) {
 			for (int j = 0; j < station.GetCats_size(); j++) {
 				station.GetCat(j).SetHappiness();
 				station.GetCat(j).SetHealth(50, "+");
 			}
-			System.out.println("Playing fetch with ALL CATS %n");
+			System.out.printf("Playing fetch with ALL CATS %n");
 		} else {
 			if (station.GetDogs_size() > 0) {
 				for (int i = 0; i < station.GetDogs_size(); i++) {
@@ -245,12 +247,12 @@ public class GameLoop {
 			for (int i = 0; i < station.GetDogs_size(); i++) {
 				station.GetDog(i).SetHappiness();
 			}
-			System.out.println("Petting ALL DOGS! %n");
+			System.out.printf("Petting ALL DOGS! %n");
 		} else if (converted.equals(allCats)) {
 			for (int j = 0; j < station.GetCats_size(); j++) {
 				station.GetCat(j).SetHappiness();
 			}
-			System.out.println("Petting ALL CATS %n");
+			System.out.printf("Petting ALL CATS %n");
 		} else {
 			if (station.GetDogs_size() > 0) {
 				for (int i = 0; i < station.GetDogs_size(); i++) {
@@ -356,7 +358,7 @@ public class GameLoop {
 		if (station.GetDogs_size() > 0) {
 			for (int i = 0; i < station.GetDogs_size(); i++) {
 				station.GetDog(i).SetHunger(true);
-				station.GetDog(i).SetHealth(50, "-");
+				station.GetDog(i).SetHealth(15, "-");
 				station.GetDog(i).SetCleanliness(false);
 				if (station.GetDog(i).GetHealth() <= 0) {
 					station.DogRemove(i);
@@ -367,7 +369,7 @@ public class GameLoop {
 		if (station.GetCats_size() > 0) {
 			for (int j = 0; j < station.GetCats_size(); j++) {
 				station.GetCat(j).SetHunger(true);
-				station.GetCat(j).SetHealth(50, "-");
+				station.GetCat(j).SetHealth(15, "-");
 				station.GetCat(j).SetCleanliness(false);
 				if (station.GetCat(j).GetHealth() <= 0) {
 					station.CatRemove(j);
@@ -383,10 +385,12 @@ public class GameLoop {
 		String[] tasks = { "Go for a walk", "Shower", "Refill bowl of water", "Give Food", "Give Snack", "Play Fetch",
 				"Pet", "Cuddle", "cut the claws", "cut the fur", "Show Stats" };
 
-		System.out.println("==================================================================");
+		System.out.println("============================================================");
 		System.out.println("Hello there! Welcome to the Game MyPets!");
 		System.out.println("In this game you will take care of you Pets in Breeding station.");
 		System.out.println("So, let's begin! Please Choose a name for your Breeding Station: ");
+
+		Customer John = Customer.createCustomer("John", 500000, 0);
 
 		Scanner input = new Scanner(System.in);
 		List<String> names = new ArrayList<String>();
@@ -403,18 +407,36 @@ public class GameLoop {
 		System.out.printf("Your station %s be Starting with %s Pets. %n", name, num_of_petsInStation);
 		System.out.println("Every day you can do 4 tasks after 4 tasks your day ends. So choose carefully.");
 		System.out.println("Let's the journey begin!");
-		System.out.println("==================================================================");
-
-		int num_of_tasks = 0;
+		System.out.println("============================================================");
 
 		// station.GetPetInfo(0, 'd');
 		Scanner taskScanner = new Scanner(System.in);
 		while (station.GetPet() > 0) {
-			System.out.println(station.GetCats_size());
 			System.out.printf("%n ======================== %n");
 			System.out.printf("%-5S Day %s %n", "", station.GetDay());
-			System.out.println("========================");
+			System.out.printf("======================== %n");
 
+			int dogOrCat = (int) (Math.random() * 2) + 1;
+			if (dogOrCat == 1) {
+				if (station.GetDogs_size() > 0) {
+
+					int randEvent = (int) (Math.random() * station.GetDogs_size() - 1) + 0;
+					System.out.printf("Random event of the Day: %s %s %n", station.GetDog(randEvent).GetName(),
+							station.RandomEvent(randEvent, dogOrCat, John));
+				} else {
+					System.out.println("No random event for today.");
+				}
+			} else {
+				if (station.GetCats_size() > 0) {
+					int randEvent = (int) (Math.random() * station.GetCats_size() - 1) + 0;
+					System.out.printf("Random event of the Day: %s %s %n", station.GetCat(randEvent).GetName(),
+							station.RandomEvent(randEvent, dogOrCat, John));
+
+				} else {
+					System.out.println("No Random Event for today.");
+				}
+			}
+			int num_of_tasks = 0;
 			while (num_of_tasks < 4) {
 				for (int i = 0; i < tasks.length; i++) {
 					System.out.printf("%s - %s %n", i, tasks[i]);
@@ -746,7 +768,7 @@ public class GameLoop {
 				if (task.equalsIgnoreCase("10")) {
 					Scanner info = new Scanner(System.in);
 					Scanner gScanner = new Scanner(System.in);
-					System.out.println("Please Enter The gender of Animal: ");
+					System.out.println("Please Enter the char of Animal (d for dog, c for cat): ");
 					String gender = gScanner.nextLine();
 
 					System.out.printf("==== %s ==== %n", gender);

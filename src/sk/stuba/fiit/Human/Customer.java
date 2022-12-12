@@ -4,10 +4,12 @@ public class Customer extends Human {
 
 	private boolean isBuying = true;
 	private int pets;
+	private int money;
 
 	private Customer(String name, int money, int pets) {
 		super(name, money, pets);
 		this.pets = pets;
+		this.money = money;
 	}
 
 	public static Customer createCustomer(String name, int money, int pets) {
@@ -20,10 +22,6 @@ public class Customer extends Human {
 
 	public boolean GetIsBuying() {
 		return this.isBuying;
-	}
-
-	public void BuyPet() {
-		// code for buying pet
 	}
 
 	public void CheckHealth(int hpOfPet) {

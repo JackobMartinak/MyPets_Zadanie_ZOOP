@@ -31,12 +31,13 @@ public class Dog extends Pet {
 		}
 	}
 
-	public void MakingPuppies() {
-		// TODO do function for this
-		// Use downcasting for this method
-		// Pet pet = new Pet();
-		// Dog downcastedDog = (Dog) animal
-		// then add dog to the list ??
+	public Dog MakePuppies(String name, char gender) {
+		// UPCASTING
+
+		DogBabies newborn = new DogBabies(name, 0, gender);
+		Dog upcastedNewBorn = (Dog) newborn;
+
+		return upcastedNewBorn;
 	}
 
 }

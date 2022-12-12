@@ -30,7 +30,10 @@ public class Cat extends Pet {
 		}
 	}
 
-	public void MakingKittens() {
-		// TODO Do a function for this
+	public Cat MakeKittens(String name, char gender) {
+		CatBabies newborn = new CatBabies(name, 0, gender);
+		Cat upcastedNewBorn = (Cat) newborn;
+
+		return upcastedNewBorn;
 	}
 }
