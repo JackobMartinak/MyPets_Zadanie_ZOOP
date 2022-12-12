@@ -40,7 +40,7 @@ public class BreedingStation {
 	}
 
 	public String RandomEvent(int rn, int dogOrCat, Customer cust) {
-		int rand = (int) (Math.random() * eventList.size()) + 1;
+		int rand = (int) (Math.random() * eventList.size()) + 0;
 
 		Scanner nameScanner = new Scanner(System.in);
 
