@@ -12,6 +12,14 @@ public class Customer extends Human {
 		this.money = money;
 	}
 
+	/**
+	 * Method for creating instance of Customer, which has private Constructor
+	 * 
+	 * @param name  argument for the name of the Customer
+	 * @param money argumnet for money that the Customer has
+	 * @param pets  argumnet fot how many pets he already owns
+	 * @return will return new Instance of Customer
+	 */
 	public static Customer createCustomer(String name, int money, int pets) {
 		return new Customer(name, money, pets);
 	}

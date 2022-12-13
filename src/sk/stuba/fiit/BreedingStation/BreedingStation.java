@@ -16,6 +16,7 @@ public class BreedingStation {
 	List<Dog> dogs = new ArrayList<Dog>();
 	List<Cat> cats = new ArrayList<Cat>();
 	List<String> eventList = new ArrayList<String>();
+	Customer John = Customer.createCustomer("John", 500000, 0);
 
 	public BreedingStation(String name, int numOfPets, List<String> names) {
 		this.NAME = name;
@@ -39,7 +40,14 @@ public class BreedingStation {
 		numOfEvents = eventList.size();
 	}
 
-	public String RandomEvent(int rn, int dogOrCat, Customer cust) {
+	/**
+	 * An function for creating and executing Random Event for Every Day in game
+	 * 
+	 * @param rn       Argument which holds the random number
+	 * @param dogOrCat Argument to determinig for whom will the random event happen
+	 * @return will return the Event which took place
+	 */
+	public String RandomEvent(int rn, int dogOrCat) {
 		int rand = (int) (Math.random() * eventList.size()) + 1;
 
 		Scanner nameScanner = new Scanner(System.in);
@@ -118,11 +126,11 @@ public class BreedingStation {
 		if (rand == 6) {
 			if (dogOrCat == 1) {
 				System.out.println("He bought the dog.");
-				cust.SetMoney(cust.GetMoney() - dogs.get(rn).GetPrice());
+				John.SetMoney(John.GetMoney() - dogs.get(rn).GetPrice());
 				dogs.remove(rn);
 			} else {
 				System.out.println("He bought the cat.");
-				cust.SetMoney(cust.GetMoney() - cats.get(rn).GetPrice());
+				John.SetMoney(John.GetMoney() - cats.get(rn).GetPrice());
 				cats.remove(rn);
 			}
 		}
@@ -161,9 +169,23 @@ public class BreedingStation {
 		return dogs.size();
 	}
 
+	/**
+	 * Returns an Dog object that can then be called with methods
+	 *
+	 * @param n Argument is an POSITIONAL INDEX OF THE SPECIFIC DOG object
+	 * @return
+	 */
+
 	public Dog GetDog(int n) {
 		return dogs.get(n);
 	}
+
+	/**
+	 * Returns an Cat object that can then be called with methods
+	 * 
+	 * @param n Argument is an POSITIONAL INDEX OF THE SPECIFIC CAT object
+	 * @return
+	 */
 
 	public Cat GetCat(int n) {
 		return cats.get(n);

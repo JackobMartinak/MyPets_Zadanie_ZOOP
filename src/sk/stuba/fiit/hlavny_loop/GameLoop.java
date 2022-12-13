@@ -382,6 +382,10 @@ public class GameLoop {
 
 	public static void main(String[] args) {
 
+		// DOWNCASTING
+		// Human johnHuman = new Human("JohnHuman", 1500, 0);
+		// Player gamer = (Player) johnHuman;
+
 		String[] tasks = { "Go for a walk", "Shower", "Refill bowl of water", "Give Food", "Give Snack", "Play Fetch",
 				"Pet", "Cuddle", "cut the claws", "cut the fur", "Show Stats" };
 
@@ -389,8 +393,6 @@ public class GameLoop {
 		System.out.println("Hello there! Welcome to the Game MyPets!");
 		System.out.println("In this game you will take care of you Pets in Breeding station.");
 		System.out.println("So, let's begin! Please Choose a name for your Breeding Station: ");
-
-		Customer John = Customer.createCustomer("John", 500000, 0);
 
 		Scanner input = new Scanner(System.in);
 		List<String> names = new ArrayList<String>();
@@ -422,7 +424,7 @@ public class GameLoop {
 
 					int randEvent = (int) (Math.random() * station.GetDogs_size() - 1) + 0;
 					System.out.printf("Random event of the Day: %s %s %n", station.GetDog(randEvent).GetName(),
-							station.RandomEvent(randEvent, dogOrCat, John));
+							station.RandomEvent(randEvent, dogOrCat));
 				} else {
 					System.out.println("No random event for today.");
 				}
@@ -430,7 +432,7 @@ public class GameLoop {
 				if (station.GetCats_size() > 0) {
 					int randEvent = (int) (Math.random() * station.GetCats_size() - 1) + 0;
 					System.out.printf("Random event of the Day: %s %s %n", station.GetCat(randEvent).GetName(),
-							station.RandomEvent(randEvent, dogOrCat, John));
+							station.RandomEvent(randEvent, dogOrCat));
 
 				} else {
 					System.out.println("No Random Event for today.");
@@ -805,11 +807,13 @@ public class GameLoop {
 
 				}
 			}
-
+			// gamer.SetScore(50);
 			station.NextDay();
 			decreaseStats(station);
 
 		}
+		// System.out.printf("%n You have finished with %s score! %n",
+		// gamer.GetScore());
 	}
 
 }
